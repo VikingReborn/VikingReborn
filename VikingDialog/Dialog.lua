@@ -48,12 +48,14 @@ end
 function Dialog:OnLoad()
 	self.xmlDoc = XmlDoc.CreateFromFile("Dialog.xml")
 	self.xmlDoc:RegisterCallback("OnDocumentReady", self)
+	Apollo.LoadSprites("VikingDialogSprites.xml", "VikingDialogSprites")
 end
 
 function Dialog:OnDocumentReady()
 	if  self.xmlDoc == nil then
 		return
 	end
+	Apollo.LoadSprites("VikingDialogSprites.xml", "VikingDialogSprites") -- blakbird
 	Apollo.LoadSprites("UI\\Dialog\\DialogSprites.xml") -- Old
 	Apollo.RegisterEventHandler("Dialog_ShowState", 						"OnDialog_ShowState", self)
 	Apollo.RegisterEventHandler("Dialog_Close", 							"OnDialog_Close", self)
