@@ -47,18 +47,18 @@ local karNPCDispositionUnitTypes =
 	["StructuredPlug"]		= true,
 }
 
-local ktMicrochipTypeNames =
-{
-	[Item.CodeEnumMicrochipType.PowerSource] 	= Apollo.GetString("CRB_Crafting_Circuit_Power_Core"),
-	[Item.CodeEnumMicrochipType.Stat] 			= Apollo.GetString("CRB_Crafting_Circuit_Stat"),
-	[Item.CodeEnumMicrochipType.PowerUp] 		= Apollo.GetString("CRB_Crafting_Circuit_Power_Up"),
-	[Item.CodeEnumMicrochipType.Special] 		= Apollo.GetString("CRB_Crafting_Circuit_Special"),
-	[Item.CodeEnumMicrochipType.Set]			= Apollo.GetString("CRB_Crafting_Circuit_Set"),
-	[Item.CodeEnumMicrochipType.Omni] 			= Apollo.GetString("CRB_Crafting_Circuit_Omni"),
-	[Item.CodeEnumMicrochipType.Capacitor] 		= Apollo.GetString("CRB_Crafting_Circuit_Capacitor"),
-	[Item.CodeEnumMicrochipType.Resistor] 		= Apollo.GetString("CRB_Crafting_Circuit_Resistor"),
-	[Item.CodeEnumMicrochipType.Inductor] 		= Apollo.GetString("CRB_Crafting_Circuit_Inductor")
-}
+-- local ktMicrochipTypeNames =
+-- {
+-- 	[Item.CodeEnumMicrochipType.PowerSource] 	= Apollo.GetString("CRB_Crafting_Circuit_Power_Core"),
+-- 	[Item.CodeEnumMicrochipType.Stat] 			= Apollo.GetString("CRB_Crafting_Circuit_Stat"),
+-- 	[Item.CodeEnumMicrochipType.PowerUp] 		= Apollo.GetString("CRB_Crafting_Circuit_Power_Up"),
+-- 	[Item.CodeEnumMicrochipType.Special] 		= Apollo.GetString("CRB_Crafting_Circuit_Special"),
+-- 	[Item.CodeEnumMicrochipType.Set]			= Apollo.GetString("CRB_Crafting_Circuit_Set"),
+-- 	[Item.CodeEnumMicrochipType.Omni] 			= Apollo.GetString("CRB_Crafting_Circuit_Omni"),
+-- 	[Item.CodeEnumMicrochipType.Capacitor] 		= Apollo.GetString("CRB_Crafting_Circuit_Capacitor"),
+-- 	[Item.CodeEnumMicrochipType.Resistor] 		= Apollo.GetString("CRB_Crafting_Circuit_Resistor"),
+-- 	[Item.CodeEnumMicrochipType.Inductor] 		= Apollo.GetString("CRB_Crafting_Circuit_Inductor")
+-- }
 
 local karClassToString =
 {
@@ -187,58 +187,56 @@ local ktRewardToString =
 
 local karSigilTypeToIcon =
 {
-	[Item.CodeEnumSigilType.Air] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Air",
-	[Item.CodeEnumSigilType.Water] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Water",
-	[Item.CodeEnumSigilType.Earth] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Earth",
-	[Item.CodeEnumSigilType.Fire] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Fire",
-	[Item.CodeEnumSigilType.Logic] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Logic",
-	[Item.CodeEnumSigilType.Life] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Life",
-	[Item.CodeEnumSigilType.Omni] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Omni",
-	[Item.CodeEnumSigilType.Fusion] 			= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Fusion",
+	[Item.CodeEnumRuneType.Air] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Air",
+	[Item.CodeEnumRuneType.Water] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Water",
+	[Item.CodeEnumRuneType.Earth] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Earth",
+	[Item.CodeEnumRuneType.Fire] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Fire",
+	[Item.CodeEnumRuneType.Logic] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Logic",
+	[Item.CodeEnumRuneType.Life] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Life",
+	[Item.CodeEnumRuneType.Fusion] 			    = "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Fusion",
 }
 
 local karSigilTypeToString =
 {
-	[Item.CodeEnumSigilType.Air] 				= Apollo.GetString("CRB_Air"),
-	[Item.CodeEnumSigilType.Water] 				= Apollo.GetString("CRB_Water"),
-	[Item.CodeEnumSigilType.Earth] 				= Apollo.GetString("CRB_Earth"),
-	[Item.CodeEnumSigilType.Fire] 				= Apollo.GetString("CRB_Fire"),
-	[Item.CodeEnumSigilType.Logic] 				= Apollo.GetString("CRB_Logic"),
-	[Item.CodeEnumSigilType.Life] 				= Apollo.GetString("CRB_Life"),
-	[Item.CodeEnumSigilType.Omni] 				= Apollo.GetString("CRB_Omni"),
-	[Item.CodeEnumSigilType.Fusion] 			= Apollo.GetString("CRB_Fusion"),
+	[Item.CodeEnumRuneType.Air] 				= Apollo.GetString("CRB_Air"),
+	[Item.CodeEnumRuneType.Water] 				= Apollo.GetString("CRB_Water"),
+	[Item.CodeEnumRuneType.Earth] 				= Apollo.GetString("CRB_Earth"),
+	[Item.CodeEnumRuneType.Fire] 				= Apollo.GetString("CRB_Fire"),
+	[Item.CodeEnumRuneType.Logic] 				= Apollo.GetString("CRB_Logic"),
+	[Item.CodeEnumRuneType.Life] 				= Apollo.GetString("CRB_Life"),
+	[Item.CodeEnumRuneType.Fusion] 			    = Apollo.GetString("CRB_Fusion"),
 }
 
-local ktAttributeToText =
-{
-	[Unit.CodeEnumProperties.Dexterity] 					= Apollo.GetString("CRB_Finesse"),
-	[Unit.CodeEnumProperties.Technology] 					= Apollo.GetString("CRB_Tech_Attribute"),
-	[Unit.CodeEnumProperties.Magic] 						= Apollo.GetString("CRB_Moxie"),
-	[Unit.CodeEnumProperties.Wisdom] 						= Apollo.GetString("UnitPropertyInsight"),
-	[Unit.CodeEnumProperties.Stamina] 						= Apollo.GetString("CRB_Grit"),
-	[Unit.CodeEnumProperties.Strength] 						= Apollo.GetString("CRB_Brutality"),
-
-	[Unit.CodeEnumProperties.Armor] 						= Apollo.GetString("CRB_Armor") ,
-	[Unit.CodeEnumProperties.ShieldCapacityMax] 			= Apollo.GetString("CBCrafting_Shields"),
-
-	[Unit.CodeEnumProperties.AssaultPower] 					= Apollo.GetString("CRB_Assault_Power"),
-	[Unit.CodeEnumProperties.SupportPower] 					= Apollo.GetString("CRB_Support_Power"),
-	[Unit.CodeEnumProperties.Rating_AvoidReduce] 			= Apollo.GetString("CRB_Strikethrough_Rating"),
-	[Unit.CodeEnumProperties.Rating_CritChanceIncrease] 	= Apollo.GetString("CRB_Critical_Chance"),
-	[Unit.CodeEnumProperties.RatingCritSeverityIncrease] 	= Apollo.GetString("CRB_Critical_Severity"),
-	[Unit.CodeEnumProperties.Rating_AvoidIncrease] 			= Apollo.GetString("CRB_Deflect_Rating"),
-	[Unit.CodeEnumProperties.Rating_CritChanceDecrease] 	= Apollo.GetString("CRB_Deflect_Critical_Hit_Rating"),
-	[Unit.CodeEnumProperties.ManaPerFiveSeconds] 			= Apollo.GetString("CRB_Attribute_Recovery_Rating"),
-	[Unit.CodeEnumProperties.HealthRegenMultiplier] 		= Apollo.GetString("CRB_Health_Regen_Factor"),
-	[Unit.CodeEnumProperties.BaseHealth] 					= Apollo.GetString("CRB_Health_Max"),
-
-	[Unit.CodeEnumProperties.ResistTech] 					= Apollo.GetString("Tooltip_ResistTech"),
-	[Unit.CodeEnumProperties.ResistMagic]					= Apollo.GetString("Tooltip_ResistMagic"),
-	[Unit.CodeEnumProperties.ResistPhysical]				= Apollo.GetString("Tooltip_ResistPhysical"),
-
-	[Unit.CodeEnumProperties.PvPOffensiveRating] 			= Apollo.GetString("Tooltip_PvPOffense"),
-	[Unit.CodeEnumProperties.PvPDefensiveRating]			= Apollo.GetString("Tooltip_PvPDefense"),
-}
+-- local ktAttributeToText =
+-- {
+-- 	[Unit.CodeEnumProperties.Dexterity] 					= Apollo.GetString("CRB_Finesse"),
+-- 	[Unit.CodeEnumProperties.Technology] 					= Apollo.GetString("CRB_Tech_Attribute"),
+-- 	[Unit.CodeEnumProperties.Magic] 						= Apollo.GetString("CRB_Moxie"),
+-- 	[Unit.CodeEnumProperties.Wisdom] 						= Apollo.GetString("UnitPropertyInsight"),
+-- 	[Unit.CodeEnumProperties.Stamina] 						= Apollo.GetString("CRB_Grit"),
+-- 	[Unit.CodeEnumProperties.Strength] 						= Apollo.GetString("CRB_Brutality"),
+-- 
+-- 	[Unit.CodeEnumProperties.Armor] 						= Apollo.GetString("CRB_Armor") ,
+-- 	[Unit.CodeEnumProperties.ShieldCapacityMax] 			= Apollo.GetString("CBCrafting_Shields"),
+-- 
+-- 	[Unit.CodeEnumProperties.AssaultPower] 					= Apollo.GetString("CRB_Assault_Power"),
+-- 	[Unit.CodeEnumProperties.SupportPower] 					= Apollo.GetString("CRB_Support_Power"),
+-- 	[Unit.CodeEnumProperties.Rating_AvoidReduce] 			= Apollo.GetString("CRB_Strikethrough_Rating"),
+-- 	[Unit.CodeEnumProperties.Rating_CritChanceIncrease] 	= Apollo.GetString("CRB_Critical_Chance"),
+-- 	[Unit.CodeEnumProperties.RatingCritSeverityIncrease] 	= Apollo.GetString("CRB_Critical_Severity"),
+-- 	[Unit.CodeEnumProperties.Rating_AvoidIncrease] 			= Apollo.GetString("CRB_Deflect_Rating"),
+-- 	[Unit.CodeEnumProperties.Rating_CritChanceDecrease] 	= Apollo.GetString("CRB_Deflect_Critical_Hit_Rating"),
+-- 	[Unit.CodeEnumProperties.ManaPerFiveSeconds] 			= Apollo.GetString("CRB_Attribute_Recovery_Rating"),
+-- 	[Unit.CodeEnumProperties.HealthRegenMultiplier] 		= Apollo.GetString("CRB_Health_Regen_Factor"),
+-- 	[Unit.CodeEnumProperties.BaseHealth] 					= Apollo.GetString("CRB_Health_Max"),
+-- 
+-- 	[Unit.CodeEnumProperties.ResistTech] 					= Apollo.GetString("Tooltip_ResistTech"),
+-- 	[Unit.CodeEnumProperties.ResistMagic]					= Apollo.GetString("Tooltip_ResistMagic"),
+-- 	[Unit.CodeEnumProperties.ResistPhysical]				= Apollo.GetString("Tooltip_ResistPhysical"),
+-- 
+-- 	[Unit.CodeEnumProperties.PvPOffensiveRating] 			= Apollo.GetString("Tooltip_PvPOffense"),
+-- 	[Unit.CodeEnumProperties.PvPDefensiveRating]			= Apollo.GetString("Tooltip_PvPDefense"),
+-- }
 
 -- TODO REFACTOR, we can combine all these item quality tables into one
 local karEvalColors =
@@ -1224,36 +1222,29 @@ end
 
 local function ItemTooltipEmptySocketsHelper(wndParent, tItemInfo, itemSource)
 	local bMadeHeader = false
-	for idx, tSocket in ipairs(itemSource:GetEmptySockets() or {}) do
-		if not tSocket.bIsLocked then
-			if not bMadeHeader then
-				bMadeHeader = true
-				ItemTooltipSeparatorSmallLineHelper(wndParent)
-			end
-
-			local strSocketType = ""
-			local wnd = Apollo.LoadForm(xmlTooltipDoc, "SimpleRowSmallML", wndParent)
-			if tSocket.eType == Item.CodeEnumMicrochipType.Stat then
-				strSocketType = String_GetWeaselString(Apollo.GetString("Tooltips_AnyAttributeEmpty"), tSocket.nValue)
-			else
-				strSocketType = String_GetWeaselString(Apollo.GetString("Tooltips_EmptySocket"), ktMicrochipTypeNames[tSocket.eType])
-			end
-			wnd:SetAML(string.format("<P Font=\"CRB_InterfaceSmall\" TextColor=\"%s\">%s</P>", kUIBody, strSocketType))
-			wnd:SetHeightToContentHeight()
-		end
+	local tRunes = tItemInfo.tRunes -- GOTCHA: This is provided data
+	if not tRunes then
+		tRunes = itemSource:GetRuneSlots() -- GOTCHA: This default data
 	end
 
-	local tSigils = tItemInfo.tSigils -- GOTCHA: This is provided data
-	if not tSigils then
-		tSigils = itemSource:GetSigils() -- GOTCHA: This default data
-	end
-
-	if tSigils and not tSigils.bIsDefined and tSigils.nMaximum and tSigils.nMaximum ~= 0 then
-		local wnd = Apollo.LoadForm(xmlTooltipDoc, "SimpleRowSmallML", wndParent)
-		if tSigils.nMinimum == tSigils.nMaximum then
-			wnd:SetAML(string.format("<P Font=\"CRB_InterfaceSmall\" TextColor=\"%s\">%s</P>", kUIBody, String_GetWeaselString(Apollo.GetString("Tooltips_RuneSlotsStatic"), tSigils.nMaximum)))
+	if tRunes and tRunes.nMinimum and tRunes.nMaximum and tRunes.nMaximum ~= 0 then
+		local wnd = Apollo.LoadForm("ui\\Tooltips\\TooltipsForms.xml", "SimpleRowSmallML", wndParent)
+		if tRunes.nMinimum == tRunes.nMaximum then
+			local tActor =
+			{
+				["count"] = tRunes.nMinimum,
+				["name"] = Apollo.GetString("Tooltips_RuneSlotPlural")
+			}
+			local strStaticAmount = String_GetWeaselString(Apollo.GetString("Tooltips_RuneSlotsStatic"), tActor)
+			wnd:SetAML(string.format("<P Font=\"CRB_InterfaceSmall\" TextColor=\"%s\">%s</P>", kUIBody, strStaticAmount))
 		else
-			wnd:SetAML(string.format("<P Font=\"CRB_InterfaceSmall\" TextColor=\"%s\">%s</P>", kUIBody, String_GetWeaselString(Apollo.GetString("Tooltips_RuneSlotsRange"), tSigils.nMinimum, tSigils.nMaximum)))
+			local tActor =
+			{
+				["count"] = tRunes.nMinimum,
+				["name"] = Apollo.GetString("Tooltips_RuneSlotPlural")
+			}
+			local strRangedAmount = String_GetWeaselString(Apollo.GetString("Tooltips_RuneSlotsRange"), tActor, tRunes.nMaximum)
+			wnd:SetAML(string.format("<P Font=\"CRB_InterfaceSmall\" TextColor=\"%s\">%s</P>", kUIBody, strRangedAmount))
 		end
 		wnd:SetHeightToContentHeight()
 	end
@@ -1393,55 +1384,135 @@ end
 
 -- #############################
 
-local function ItemTooltipSigilHelper(wndParent, tItemInfo, itemSource) -- Drawing runes on an item, not if mousing over a rune item
-	-- TODO: FORMATTING w/ ICONS
-	local tSigils = tItemInfo.tSigils -- GOTCHA: This is provided data
-	if not tSigils then
-		tSigils = itemSource:GetSigils() -- GOTCHA: This is default data
-	end
+local function ItemTooltipSigilHelper(wndParent, tItemInfo, itemSource)
 
-	if tSigils and tSigils.arSigils then
+	-- if the item is a rune
+	if tItemInfo.tRuneSet then
+
 		ItemTooltipSeparatorSmallLineHelper(wndParent)
 
-		local nHeight = 0
-		local wndBox = Apollo.LoadForm(xmlTooltipDoc, "ItemTooltip_RuneBox", wndParent)
+		local wnd = Apollo.LoadForm("ui\\Tooltips\\TooltipsForms.xml", "SimpleRowSmallML", wndParent)
+		wnd:SetAML(string.format("<P Font=\"CRB_InterfaceMedium\" TextColor=\"%s\">%s</P>", kUIGreen, String_GetWeaselString(Apollo.GetString("ItemTooltip_RuneSetText"), tItemInfo.tRuneSet.nPower, tItemInfo.tRuneSet.strName)))
+		local nTextWidth, nTextHeight = wnd:SetHeightToContentHeight()
+		local nLeft, nTop, nRight, nBottom = wnd:GetAnchorOffsets()
+		wnd:SetAnchorOffsets(nLeft, nTop, nRight, nTop + nTextHeight + 3)
 
-		for idx, tCur in pairs(tSigils.arSigils) do
-			if karSigilTypeToString[tCur.eElement] then
-				local wnd = Apollo.LoadForm(xmlTooltipDoc, "ItemTooltip_Rune", wndBox)
-				local itemSigil = tCur.itemSigil
-				if itemSigil then
-					wnd:FindChild("ItemTooltip_RuneIcon"):SetSprite(itemSigil:GetIcon())
+		wnd = Apollo.LoadForm("ui\\Tooltips\\TooltipsForms.xml", "SimpleRowSmallML", wndParent)
+		wnd:SetAML(string.format("<P Font=\"CRB_InterfaceSmall\" TextColor=\"%s\">%s</P>", kUIBody , Apollo.GetString("ItemTooltip_RuneSetBonusText")))
+		wnd:SetHeightToContentHeight()
 
-					-- TODO FIX! This is faulty logic and won't work if there's more than one rune giving bonuses
-					-- TODO: Use tCur.eProperty and tCur.nValue
-					-- TODO: If a rune just shows set
+		for idx, tCur in pairs(tItemInfo.tRuneSet.arBonuses) do
 
-					if tCur.nValue and tCur.nValue > 0 then
-						wnd:FindChild("ItemTooltip_RuneText"):SetText(String_GetWeaselString(Apollo.GetString("Tooltips_RuneAttributeBonus"), tCur.nValue, (ktAttributeToText[tCur.eProperty] or "")))
-					else
-						wnd:FindChild("ItemTooltip_RuneText"):SetText(itemSigil:GetName()) -- Shouldn't happen
-					end
+			wnd = Apollo.LoadForm("ui\\Tooltips\\TooltipsForms.xml", "SimpleRowSmallML", wndParent)
+
+			local strPower = ""
+			local strValue = ""
+
+			if tCur.strFlavor then
+
+				strPower = string.format("<T TextColor=\"%s\">%s</T>", kUIBody , String_GetWeaselString(Apollo.GetString("ItemTooltip_RuneSpellPowerSummaryText"), tCur.nPower))
+				strValue = string.format("<T TextColor=\"%s\">%s</T>", kUICyan , String_GetWeaselString(Apollo.GetString("ItemTooltip_RuneSetNameFlavor"), tCur.strName, tCur.strFlavor))
+
+			else
+				local nAdjusted_Value
+
+				if tCur.nValue then
+					nAdjusted_Value = tCur.nValue * 100 -- make a %
 				else
-					local strElement = karSigilTypeToString[tCur.eElement]
-					local strText = tCur.bUnlocked and String_GetWeaselString(Apollo.GetString("Tooltips_RuneSlotOpen"), strElement) or String_GetWeaselString(Apollo.GetString("Tooltips_RuneSlotLocked"), strElement)
-					wnd:FindChild("ItemTooltip_RuneIcon"):SetSprite(karSigilTypeToIcon[tCur.eElement])
-					wnd:FindChild("ItemTooltip_RuneText"):SetText(strText)
+					nAdjusted_Value = ((tCur.nScalar * 100) - 100) -- make a %
 				end
 
-				-- If it's the only item, use the full space
-				if #tSigils.arSigils == 1 then
-					local nLeft, nTop, nRight, nBottom = wnd:GetAnchorOffsets()
-					wnd:SetAnchorOffsets(nLeft, nTop, wndBox:GetWidth() / 2, nBottom)
+				if nAdjusted_Value >= 0 then
+					strValue = string.format("<T TextColor=\"%s\">%s</T>", kUICyan , String_GetWeaselString(Apollo.GetString("ItemTooltip_RuneSetPositivePower"), nAdjusted_Value, tCur.strName))
+				else
+					strValue = string.format("<T TextColor=\"%s\">%s</T>", kUICyan , String_GetWeaselString(Apollo.GetString("ItemTooltip_RuneSetNegativePower"), nAdjusted_Value, tCur.strName))
 				end
+
+				strPower = string.format("<T TextColor=\"%s\">%s</T>", kUIBody , String_GetWeaselString(Apollo.GetString("ItemTooltip_RuneSpellPowerSummaryText"), tCur.nPower))
+
 			end
+
+			wnd:SetAML(string.format("<P Font=\"CRB_InterfaceSmall\">%s</P>", strPower .. strValue ))
+			wnd:SetHeightToContentHeight()
+
 		end
 
-		wndBox:ArrangeChildrenTiles(0)
-		local nNumChildren = #wndBox:GetChildren()
-		local nLeft, nTop, nRight, nBottom = wndBox:GetAnchorOffsets()
-		wndBox:SetAnchorOffsets(nLeft, nTop, nRight, nTop + (math.ceil(nNumChildren / 2) * 43))
+		wndParent:ArrangeChildrenVert(1)
+
 	end
+
+	-- IMPORTANT: Drawing runes on an item, not if mousing over a rune item
+	local tRunes = tItemInfo.tRunes -- GOTCHA: This is provided data
+	if not tRunes then
+		tRunes = itemSource:GetRuneSlots() -- GOTCHA: This is default data
+	end
+
+	if not tRunes or not tRunes.arRuneSlots then
+		return
+	end
+
+	-- Order is important, create the divider first
+	for idx, tCur in pairs(tRunes.arRuneSlots) do
+		if karSigilTypeToString[tCur.eElement] then
+			ItemTooltipSeparatorSmallLineHelper(wndParent)
+			break
+		end
+	end
+
+	-- if item has socketed rune sets
+	if tItemInfo.arSets then
+		local strResult = ""
+		for idxSets, tCurSets in pairs(tItemInfo.arSets) do
+			strResult =  String_GetWeaselString(Apollo.GetString("ItemTooltip_RuneSetSummaryText"), tCurSets.strName, tCurSets.nPower, tCurSets.nMaxPower)
+			local wnd = Apollo.LoadForm("ui\\Tooltips\\TooltipsForms.xml", "ItemTooltip_RuneSummary", wndParent)
+			wnd:FindChild("ItemTooltip_RuneSummaryML"):SetAML(strResult)
+			-- Resize
+			local nTextWidth, nTextHeight = wnd:FindChild("ItemTooltip_RuneSummaryML"):SetHeightToContentHeight()
+			local nLeft, nTop, nRight, nBottom = wnd:GetAnchorOffsets()
+			wnd:SetAnchorOffsets(nLeft, nTop, nRight, nTop + nTextHeight + 23)
+		end
+	end
+
+	local nHeight = 0
+	local wndBox = Apollo.LoadForm("ui\\Tooltips\\TooltipsForms.xml", "ItemTooltip_RuneBox", wndParent)
+	for idx, tCur in pairs(tRunes.arRuneSlots) do
+		if karSigilTypeToString[tCur.eElement] then
+			local wnd = Apollo.LoadForm("ui\\Tooltips\\TooltipsForms.xml", "ItemTooltip_Rune", wndBox)
+			if nHeight == 0 then
+				nHeight = wnd:GetHeight()
+			end
+
+			if tCur.itemRune then
+				wnd:FindChild("ItemTooltip_RuneIcon"):SetSprite(karSigilTypeToIcon[tCur.eElement].strUsed or "")
+				if tCur.arSpells then
+					for idxSpells, tCurSpells in pairs(tCur.arSpells) do
+						wnd:FindChild("ItemTooltip_RuneText"):SetText(tCurSpells.strName)
+					end
+				else
+					for idxProperty, tCurProperty in pairs(tCur.arProperties) do
+						if tCurProperty.nValue and tCurProperty.nValue > 0 then
+							wnd:FindChild("ItemTooltip_RuneText"):SetText(String_GetWeaselString(Apollo.GetString("Tooltips_RuneAttributeBonus"), tCurProperty.nValue, Item.GetPropertyName(tCurProperty.eProperty)))
+						end
+					end
+				end
+			else
+				local strText = Apollo.GetString("Tooltips_RuneSlotOpen")
+				wnd:FindChild("ItemTooltip_RuneIcon"):SetSprite(karSigilTypeToIcon[tCur.eElement].strEmpty or "")
+				wnd:FindChild("ItemTooltip_RuneText"):SetText(String_GetWeaselString(strText, karSigilTypeToString[tCur.eElement]))
+			end
+
+			-- If it's the only item, use the full space
+			if #tRunes.arRuneSlots == 1 then
+				local nLeft, nTop, nRight, nBottom = wnd:GetAnchorOffsets()
+				wnd:SetAnchorOffsets(nLeft, nTop, wndBox:GetWidth() / 2, nBottom)
+			end
+		end
+	end
+
+	wndBox:ArrangeChildrenTiles(Window.CodeEnumArrangeOrigin.LeftOrTop)
+	local nNumChildren = #wndBox:GetChildren()
+	local nLeft, nTop, nRight, nBottom = wndBox:GetAnchorOffsets()
+	wndBox:SetAnchorOffsets(nLeft, nTop, nRight, nTop + (math.ceil(nNumChildren / 2) * nHeight))
 end
 
 -- #############################
