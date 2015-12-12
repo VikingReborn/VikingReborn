@@ -187,13 +187,13 @@ local ktRewardToString =
 
 local karSigilTypeToIcon =
 {
-	[Item.CodeEnumRuneType.Air] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Air",
-	[Item.CodeEnumRuneType.Water] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Water",
-	[Item.CodeEnumRuneType.Earth] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Earth",
-	[Item.CodeEnumRuneType.Fire] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Fire",
-	[Item.CodeEnumRuneType.Logic] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Logic",
-	[Item.CodeEnumRuneType.Life] 				= "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Life",
-	[Item.CodeEnumRuneType.Fusion] 			    = "ClientSprites:Icon_Windows_UI_CRB_Tooltip_Fusion",
+	[Item.CodeEnumRuneType.Air] 	= { strUsed = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Air_Used",	strEmpty = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Air_Empty" },
+	[Item.CodeEnumRuneType.Fire]	= { strUsed = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Fire_Used",	strEmpty = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Fire_Empty" },
+	[Item.CodeEnumRuneType.Water]	= { strUsed = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Water_Used",	strEmpty = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Water_Empty" },
+	[Item.CodeEnumRuneType.Earth]	= { strUsed = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Earth_Used",	strEmpty = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Earth_Empty" },
+	[Item.CodeEnumRuneType.Logic]	= { strUsed = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Logic_Used",	strEmpty = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Logic_Empty" },
+	[Item.CodeEnumRuneType.Life]	= { strUsed = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Life_Used",	strEmpty = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Life_Empty" },
+	[Item.CodeEnumRuneType.Fusion]	= { strUsed = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Fusion_Used",	strEmpty = "IconSprites:Icon_RuneSocket_Icon_Windows_UI_RuneSocket_Fusion_Empty" },
 }
 
 local karSigilTypeToString =
