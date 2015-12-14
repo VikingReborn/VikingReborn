@@ -192,6 +192,36 @@ function VikingUnitFrames:CreateUnitFrame(name)
 
 end
 
+-- 
+-- CreatePetFrame
+--
+-- Builds a PetFrame instance
+function VikingUnitFrames:CreatePetFrame(name)
+
+ local sFrame = "t" .. name .. "Frame"
+
+ local wndPetFrame = Apollo.LoadForm(self.xmlDoc, "PetFrame", "FixedHudStratumLow" , self)
+
+ local tFrame = {
+    name = name,
+    wndPetFrame = wndPetFrame,
+    wndHealthBar = wndPetFrame:FindChild("Bars:Health"),
+    wndShieldBar = wndPetFrame:FindChild("Bars:Shield"),
+    wndAbsorbBar = wndPetFrame:FindChild("Bars:Absorb"),
+    wndTargetMark = wndPetFrame:FindChild("TargetExtra:Mark"),
+    wndInterrupt = wndPetFrame:FindChild("TargetExtra:InterruptArmor"),
+ }
+ 
+ tFrame.wndPetFrame:SetSizingMinimum(60, 60)
+
+ tFrame.locDefaultPosition = WindowLocation.new(self.db.char.position[name:lower() .. "Frame"])
+ tFrame.wndPetFrame:MoveToLocation(tFrame.locDefaultPosition)
+ self:InitColors(tFrame)
+
+ return tFrame
+
+end
+
 
 function VikingUnitFrames:GetDefaults()
 
@@ -203,7 +233,7 @@ function VikingUnitFrames:GetDefaults()
       position = {
         playerFrame = {
           fPoints   = {0.5, 1, 0.5, 1},
-          nOffsets  = {-350, -200, -100, -120}
+          nOffsets  = {-350, -240, -100, -160}
         },
         targetFrame = {
           fPoints   = {0.5, 1, 0.5, 1},
@@ -216,7 +246,19 @@ function VikingUnitFrames:GetDefaults()
         totFrame   = {
           fPoints  = {0.5, 1, 0.5, 1},
           nOffsets = {350, -300, 600, -220}
-        }
+        },
+        playermountFrame = {
+          fPoints = {0.5, 1, 0.5, 1},
+          nOffsets = {-350, -155, -290, -125}
+        },
+        playerlpetFrame = {
+          fPoints = {0.5, 1, 0.5, 1},
+          nOffsets = {-280, -155, -220, -125}
+        },
+        playerrpetFrame = {
+          fPoints = {0.5, 1, 0.5, 1},
+          nOffsets = {-210, -155, -150, -125}
+        },
       },
       textStyle = {
         Value           = false,
@@ -240,7 +282,7 @@ function VikingUnitFrames:GetDefaults()
         Absorb = { high = "ff" .. tColors.yellow, average = "ff" .. tColors.yellow, low = "ff" .. tColors.yellow },
       },
       ToT = {
-         ToTFrame = true
+        ToTFrame = true
       }
     }
   }
@@ -283,6 +325,15 @@ function VikingUnitFrames:OnCharacterLoaded()
 
   -- Focus Frame
   self:UpdateUnitFrame(self.tFocusFrame, playerUnit:GetAlternateTarget())
+
+  -- Mount Frame
+  self.tPlayerMountFrame = self:CreatePetFrame("PlayerMount")
+  self.tPlayerMountFrame["wndHealthBar"]:SetAnchorPoints(0,0,1,1) -- mounts have no shield
+
+  -- Pet Frames
+  self.tPlayerLPetFrame = self:CreatePetFrame("PlayerLPet")
+  self.tPlayerRPetFrame = self:CreatePetFrame("PlayerRPet")
+	
 end
 
 --
@@ -306,6 +357,9 @@ function VikingUnitFrames:OnWindowManagementReady()
 
   Event_FireGenericEvent("WindowManagementRegister", { wnd = self.tToTFrame.wndUnitFrame,  strName = "Viking Target of Target Frame", nSaveVersion=1 })
   Event_FireGenericEvent("WindowManagementAdd",      { wnd = self.tToTFrame.wndUnitFrame,  strName = "Viking Target of Target Frame", nSaveVersion=1 })
+  Event_FireGenericEvent("WindowManagementAdd",      { wnd = self.tPlayerMountFrame.wndPetFrame, strName = "Viking Player Mount Frame" })
+  Event_FireGenericEvent("WindowManagementAdd",      { wnd = self.tPlayerLPetFrame.wndPetFrame, strName = "Viking Player Left Pet Frame" })
+  Event_FireGenericEvent("WindowManagementAdd",      { wnd = self.tPlayerRPetFrame.wndPetFrame, strName = "Viking Player Right Pet Frame" })
 end
 
 
@@ -357,6 +411,23 @@ function VikingUnitFrames:UpdateUnitFrame(tFrame, unit)
 
 end
 
+function VikingUnitFrames:UpdatePetFrame(tFrame, unit)
+  
+  tFrame.wndPetFrame:Show(unit ~= nil)
+  
+  if unit ~= nil then
+    self:SetUnit(tFrame, unit)
+    if unit:GetType() == "Mount" then
+      self:SetUnitName(tFrame, "M")
+      else
+        if unit:GetType() == "Pet" then
+          self:SetUnitName(tFrame, string.sub(unit:GetName(),1,2)) -- use first letters of name
+        end
+    end
+  end
+  
+end
+
 function VikingUnitFrames:OnFocusSlashCommand()
   local unitTarget = GameLib.GetTargetUnit()
 
@@ -404,6 +475,37 @@ function VikingUnitFrames:OnFrame()
     self:SetUnitLevel(self.tToTFrame)
     self:SetInterruptArmor(self.tToTFrame)
 
+    -- PlayerMountFrame
+    self:UpdatePetFrame(self.tPlayerMountFrame,GameLib:GetPlayerMountUnit(), true)
+    self:UpdateBars(self.tPlayerMountFrame)
+    self.tPlayerMountFrame["wndHealthBar"]:FindChild("Text"):SetText("")
+    self.tPlayerMountFrame["wndShieldBar"]:FindChild("Text"):SetText("")
+    
+    -- PlayerPetFrames
+    local currentpet = GameLib:GetPlayerPets()[1]
+    if currentpet ~= nil then
+      local tt = currentpet:GetName().. "\n"
+        .. "hp: " .. currentpet:GetHealth() .. "/" .. currentpet:GetMaxHealth() .. "\n"
+        .. "shield: " .. currentpet:GetShieldCapacity() .. "/" .. currentpet:GetShieldCapacityMax()
+      
+      self:UpdatePetFrame(self.tPlayerLPetFrame, GameLib:GetPlayerPets()[1], true)
+      self:UpdateBars(self.tPlayerLPetFrame)
+      self.tPlayerLPetFrame["wndPetFrame"]:SetTooltip(tt)
+      self.tPlayerLPetFrame["wndHealthBar"]:FindChild("Text"):SetText("")
+      self.tPlayerLPetFrame["wndShieldBar"]:FindChild("Text"):SetText("")
+    end
+    currentpet = GameLib:GetPlayerPets()[2]
+    if currentpet ~= nil then
+      local tt = currentpet:GetName().. "\n"
+        .. "hp: " .. currentpet:GetHealth() .. "/" .. currentpet:GetMaxHealth() .. "\n"
+        .. "shield: " .. currentpet:GetShieldCapacity() .. "/" .. currentpet:GetShieldCapacityMax()
+      
+      self:UpdatePetFrame(self.tPlayerRPetFrame, GameLib:GetPlayerPets()[2], true)
+      self:UpdateBars(self.tPlayerRPetFrame)
+      self.tPlayerRPetFrame["wndHealthBar"]:FindChild("Text"):SetText("")
+      self.tPlayerRPetFrame["wndShieldBar"]:FindChild("Text"):SetText("")
+      self.tPlayerRPetFrame["wndPetFrame"]:SetTooltip(tt)
+    end
   end
 end
 
@@ -612,15 +714,17 @@ end
 -- Set Unit on UnitFrame
 
 function VikingUnitFrames:SetUnit(tFrame, unit)
+  local frame = tFrame.wndUnitFrame or tFrame.wndPetFrame
   tFrame.unit = unit
 
-  tFrame.wndUnitFrame:FindChild("Good"):SetUnit(unit)
-  tFrame.wndUnitFrame:FindChild("Bad"):SetUnit(unit)
-
-  self:SetDisposition(tFrame, unit)
+  if frame:FindChild("Good") then
+    frame:FindChild("Good"):SetUnit(unit)
+    frame:FindChild("Bad"):SetUnit(unit)
+    self:SetDisposition(tFrame, unit)
+  end
 
   -- Set the Data to the unit, for mouse events
-  tFrame.wndUnitFrame:SetData(tFrame.unit)
+  frame:SetData(tFrame.unit)
 
 end
 
@@ -631,7 +735,8 @@ end
 -- Set Name on UnitFrame
 
 function VikingUnitFrames:SetUnitName(tFrame, sName)
-  tFrame.wndUnitFrame:FindChild("UnitName"):SetText(sName)
+  local frame = tFrame.wndUnitFrame or tFrame.wndPetFrame
+  frame:FindChild("UnitName"):SetText(sName)
 end
 
 
@@ -682,13 +787,14 @@ end
 
 function VikingUnitFrames:InitColors(tFrame)
 
+  local frame = tFrame.wndUnitFrame or tFrame.wndPetFrame
   local colors = {
     background = {
-      wnd   = tFrame.wndUnitFrame:FindChild("Background"),
+      wnd   = frame:FindChild("Background"),
       color = ApolloColor.new(self.generalDb.char.colors.background)
     },
     gradient = {
-      wnd   = tFrame.wndUnitFrame,
+      wnd   = frame,
       color = ApolloColor.new(self.generalDb.char.colors.gradient)
     },
     interrupt = {
@@ -734,8 +840,8 @@ end
 
 function VikingUnitFrames:ShowBuffBar(tFrame)
 
-  -- If no unit then don't do anything
-  if tFrame.unit == nil then return end
+  -- If no unit or pet then don't do anything
+  if tFrame.unit == nil or tFrame.wndPetFrame ~= nil then return end
 
   local BuffGood = self.db.char.buffs["BuffGoodShow"]
   local BuffBad  = self.db.char.buffs["BuffBadShow"]
